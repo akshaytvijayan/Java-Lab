@@ -1,3 +1,16 @@
+Q).Write a program to illustrate the following string manipulation methods
+
+a) Create new string using 'new'
+b) Getting string length
+c) String concatenation
+d) Character extraction
+e) String comparison
+f) Searching substring
+g) Modifying a string
+h) data conversion using valueOf()
+
+******************************************************************************
+
 import java.util.*;
 import java.util.Scanner;
 class StringManipulation
