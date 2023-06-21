@@ -1,0 +1,154 @@
+/*Program to create a class for Employee having attributes eNo, eName eSalary. Read n employ information and Search for an employee given eNo, using the concept of Array of Objects. */
+
+import java.util.Scanner;
+class Employee{ 
+int eNo, eSalary; 
+String eName; 
+Employee(int eNo, String eName, int eSalary){ 
+this.eNo = eNo; 
+this.eName = eName; 
+this.eSalary = eSalary; 
+} 
+} 
+class Employees{
+public static void main(String[] args){ 
+int lastIndex = 0; 
+Employee[] employees = new Employee[3]; 
+Scanner sc =new Scanner(System.in); 
+Employees emps = new Employees(); 
+int opt = 0; 
+do{ 
+System.out.println("\n\n\tChoose a Option "); 
+System.out.println("\t---------------");
+System.out.println("\n1. Add new Employee\n2. Search Employee\n3. Display Employees\n4. Exit"); 
+System.out.print("\tOption: "); 
+opt = sc.nextInt(); 
+switch(opt){ 
+case 1 : employees[lastIndex++] = emps.addNewEmployee(); 
+break; 
+case 2 : System.out.print("Enter eNo:"); 
+int empNo = sc.nextInt(); 
+Employee emp = emps.searchEmployee(employees, empNo); 
+if(emp != null){ 
+System.out.println("eNo\teName\teSalary\t");
+System.out.println(emp.eNo+"\t"+emp.eName+"\t"+emp.eSalary); 
+} else{ 
+System.out.println("There is no emplyee with ID Number:- "+ empNo +" :("); 
+} 
+break; 
+case 3 : emps.displayDetails(employees); 
+break; 
+case 4 : opt = 4; 
+break; 
+default : System.out.println("Invalid Option"); 
+} 
+} while(opt != 4); 
+} 
+Employee addNewEmployee(){ 
+Scanner sc = new Scanner(System.in); 
+System.out.println("\n********************Enter Details Of Employee***********************************");
+System.out.print("Enter ID: "); 
+int id = sc.nextInt(); 
+System.out.print("Enter Name: ");
+String name = sc.next(); 
+System.out.print("Enter Salary: "); 
+int salary = sc.nextInt(); 
+return new Employee(id,name,salary); 
+} 
+Employee searchEmployee(Employee[] employees, int eNo){ 
+for(Employee emp: employees){ 
+if(emp.eNo == eNo){ 
+return emp; 
+} 
+} 
+return null; 
+} 
+void displayDetails(Employee[] employees){ 
+System.out.println("EmpID\tName\tSalary\t"); 
+for(Employee emp:employees){ 
+if(emp != null){ 
+System.out.println(emp.eNo+"\t"+emp.eName+"\t"+emp.eSalary); 
+} else { 
+System.out.println("There is no emplyees:(");
+return; 
+} 
+} 
+} 
+}
+
+OUTPUT
+------
+ksb@ksb-OptiPlex-3060:~/akshaytvijayan/javaLab/23.Employee$ javac Employees.java
+ksb@ksb-OptiPlex-3060:~/akshaytvijayan/javaLab/23.Employee$ java Employees
+
+	Choose a Option 
+	---------------
+
+1. Add new Employee
+2. Search Employee
+3. Display Employees
+4. Exit
+	Option: 1
+
+********************Enter Details Of Employee***********************************
+Enter ID: 1000
+Enter Name: AKSHAY
+Enter Salary: 100000
+
+
+	Choose a Option 
+	---------------
+
+1. Add new Employee
+2. Search Employee
+3. Display Employees
+4. Exit
+	Option: 1
+
+********************Enter Details Of Employee***********************************
+Enter ID: 1001
+Enter Name: ASWIN
+Enter Salary: 50000
+
+
+	Choose a Option 
+	---------------
+
+1. Add new Employee
+2. Search Employee
+3. Display Employees
+4. Exit
+	Option: 1
+
+********************Enter Details Of Employee***********************************
+Enter ID: 1002
+Enter Name: VIPIN
+Enter Salary: 25000
+
+
+	Choose a Option 
+	---------------
+
+1. Add new Employee
+2. Search Employee
+3. Display Employees
+4. Exit
+	Option: 3
+EmpID	Name	Salary	
+1000	AKSHAY	100000
+1001	ASWIN	50000
+1002	VIPIN	25000
+
+
+	Choose a Option 
+	---------------
+
+1. Add new Employee
+2. Search Employee
+3. Display Employees
+4. Exit
+	Option: 2
+  
+Enter eNo:1000
+eNo	eName	eSalary	
+1000	AKSHAY	100000
